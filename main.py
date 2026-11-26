@@ -18,7 +18,8 @@ forces storm a Cartagena supermarket after a 17-hour siege and free
 all 20 hostages, one captor killed. The ticker adds the
 Australia-Solomon Islands security pact, the Bangladesh garment pay
 rise, India's Constitution Day, the Mercury mission and the US
-tariff plan.
+tariff plan. A footer bar under the ticker repeats the
+date and names the outlets the stories were drawn from.
 """
 
 import os
@@ -263,7 +264,12 @@ def main():
                  "FORCES STORMED AN EXITO SUPERMARKET AFTER A 17-HOUR SIEGE, RESCUING ALL 20 HOSTAGES. ONE CAPTOR WAS KILLED. TEN PEOPLE HAD BEEN FREED EARLIER.")
     bottom = max(end3, end4)
     cv.rect(32, bottom + 8, WIDTH - 64, 3, INK)
-    cv.wrapped(32, bottom + 18, "SOLOMONS CHOOSE AUSTRALIA AS PRIMARY SECURITY PARTNER + BANGLADESH GARMENT PAY UP 36% + INDIA MARKS CONSTITUTION DAY + MERCURY MISSION ARRIVES AFTER 8 YEARS + US PREPARING NEW TARIFF PLAN", 2, GREY, WIDTH - 64, leading=18)
+    y = cv.wrapped(32, bottom + 18, "SOLOMONS CHOOSE AUSTRALIA AS PRIMARY SECURITY PARTNER + BANGLADESH GARMENT PAY UP 36% + INDIA MARKS CONSTITUTION DAY + MERCURY MISSION ARRIVES AFTER 8 YEARS + US PREPARING NEW TARIFF PLAN", 2, GREY, WIDTH - 64, leading=18)
+    cv.rect(32, y + 24, WIDTH - 64, 3, INK)
+    cv.rect(32, y + 40, WIDTH - 64, 40, INK)
+    cv.text(48, y + 52, "THURSDAY 26 NOVEMBER 2026", 2, PAPER)
+    sources = "SOURCES: REUTERS, AP, BBC, MEDUZA, MEDIAZONA"
+    cv.text(WIDTH - 48 - cv.text_width(sources, 2), y + 52, sources, 2, PAPER)
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     write_png(os.path.join(out_dir, "entry.png"), cv)
